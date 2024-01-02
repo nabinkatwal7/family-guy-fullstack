@@ -17,8 +17,8 @@ export const Navigation = () => {
           <Image
             src="/logo.png"
             alt="Family Guy"
-            width={70}
-            height={50}
+            width={60}
+            height={40}
             className="w-24 h-24"
           />
         </Link>
