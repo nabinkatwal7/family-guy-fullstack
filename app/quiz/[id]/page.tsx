@@ -7,14 +7,24 @@
  @returns {JSX.Element} The rendered page component.
  */
 
-import { Container } from '@/components'
-import { Answer } from '@/components/Answer'
-import { endpoint } from '@/utils/endpoint'
+import { Container } from "@/components";
+import { Answer } from "@/components/Answer";
+import { endpoint } from "@/utils/endpoint";
 
-export default async function Page({ params }) {
-    return (
-        <main>
-            <h1>dynamic questions</h1>
-        </main>
-    )
+async function getQuizQuestion(id: string) {
+  const data = await fetch(`${endpoint}/quiz/${id}`, { cache: "no-store" });
+  if (!data.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return data.json();
+}
+
+export default async function Page({ params }: { params: { id: string } }) {
+  const { question } = await getQuizQuestion(params.id);
+  return (
+    <Container as="main" className="flex flex-col gap-5 py-5">
+      <h1 className="text-lg font-semibold">{question.title}</h1>
+      <Answer answers={question.answers} questionId={params.id} />
+    </Container>
+  );
 }

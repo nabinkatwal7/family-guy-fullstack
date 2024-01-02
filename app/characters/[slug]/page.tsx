@@ -12,7 +12,7 @@ import Image from "next/image";
 import { endpoint } from "@/utils/endpoint";
 import { getAllCharacters } from "@/lib/characters";
 
-export const dynamicParams = false;
+export const dynamicParams: boolean = false;
 
 export async function generateStaticParams() {
   const { characters } = await getAllCharacters();
@@ -86,7 +86,7 @@ export default async function Page({ params }: { params: any }) {
         <>
           <h2 className="text-xl font-bold">Famous Qoutes</h2>
           <ul className="grid gap-5">
-            {character_quotes.map((item, idx) => {
+            {character_quotes.map((item: any, idx: number) => {
               return (
                 <li
                   className="p-2 italic text-gray-400 border-l-4 border-green-400 rounded-md"
