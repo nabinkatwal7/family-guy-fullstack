@@ -4,11 +4,32 @@
  @returns {JSX.Element} The rendered navigation component.
  */
 
-import Link from 'next/link'
-import { Container } from './index'
-import Image from 'next/image'
-import { TbArrowBigRightFilled } from 'react-icons/tb'
+import Link from "next/link";
+import { Container } from "./index";
+import Image from "next/image";
+import { TbArrowBigRightFilled } from "react-icons/tb";
 
 export const Navigation = () => {
-    return <nav>navigation component</nav>
-}
+  return (
+    <div className="sticky top-0 backdrop-blur-xl bg-[rgba(0,0,0,0.8)]">
+      <Container className="flex justify-between py-5">
+        <Link href={"/"}>
+          <Image
+            src="/logo.png"
+            alt="Family Guy"
+            width={70}
+            height={50}
+            className="w-24 h-24"
+          />
+        </Link>
+        <Link
+          href="/quiz"
+          className="flex items-center justify-center gap-1 px-5 font-semibold text-black transition-colors bg-green-500 rounded-md duration-600 hover:bg-green-600"
+        >
+          <TbArrowBigRightFilled className="text-lg" />
+          Take a quiz
+        </Link>
+      </Container>
+    </div>
+  );
+};

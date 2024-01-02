@@ -9,13 +9,23 @@
  @returns {JSX.Element} The rendered container component.
  */
 
-export const Container = ({as: Element = 'div', children, className, ...rest}) => {
-    return (
-        <Element
-            {...rest}
-            className={`px-5 w-full max-w-screen-md m-auto ${className}`}
-        >
-            {children}
-        </Element>
-    )
-}
+export const Container = ({
+  as: Element = "div",
+  children,
+  className,
+  ...rest
+}: {
+  as?: keyof JSX.IntrinsicElements;
+  children: React.ReactNode;
+  className?: string;
+  rest?: any;
+}) => {
+  return (
+    <Element
+      {...rest}
+      className={`px-5 w-full max-w-screen-md m-auto ${className}`}
+    >
+      {children}
+    </Element>
+  );
+};
